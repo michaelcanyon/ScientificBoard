@@ -1,0 +1,116 @@
+﻿.auth_forms_size {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 25%;
+    left:20%;
+}
+
+.auth_forms {
+    margin-top: 5%;
+    margin-left: 20%;
+}
+
+.auth_header {
+    font-family: Poppins-Medium, sans-serif;
+    font-size: 2vw;
+    text-align: center;
+    margin-top: 25%;
+}
+
+.auth_header_size {
+    position: absolute;
+    width: 100%;
+    height: 35%;
+}
+
+input[class="inputreg"] {
+    width: 280px;
+    height: 40px;
+    font-size: 15px;
+    border-color: transparent;
+    display: block;
+    background: #ededed;
+    border-radius: 25px;
+    outline: none;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    width: 280px;
+    height: 40px;
+    font-size: 15px;
+    border-color: transparent;
+    display: block;
+    background: #ededed;
+    border-radius: 25px;
+    outline: none;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #3ab66c;
+    animation-name: bganimation_out;
+    animation-duration: 0.5s;
+    margin-top: 30px;
+}
+
+input[class="inputreg"]:hover {
+    background-color: #000000;
+    animation-name: bganimation;
+    animation-duration: 0.5s;
+}
+
+textarea {
+    resize: none;
+    width: 400px;
+    height: 300px;
+    font-size: 15px;
+    border-color: transparent;
+    display: block;
+    background: #ededed;
+    border-radius: 25px;
+    outline: none;
+    text-align: center;
+    margin-bottom: 10px;
+}
+@keyframes bganimation {
+    from {
+        background-color: #3ab66c;
+    }
+
+    to {
+        background-color: #000000;
+    }
+}
+
+@keyframes bganimation_out {
+    from {
+        background-color: #000000;
+    }
+
+    to {
+        background-color: #3ab66c;
+    }
+}
+
+@keyframes txt_animation {
+    from {
+        color: #3ab66c;
+    }
+
+    to {
+        color: #000000;
+    }
+}
+
+@keyframes txt_animation_out {
+    from {
+        color: #000000;
+    }
+
+    to {
+        color: #3ab66c;
+    }
+}

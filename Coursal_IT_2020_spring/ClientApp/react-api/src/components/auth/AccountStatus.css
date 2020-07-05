@@ -1,0 +1,18 @@
+﻿.page_headline-list {
+    display: inline-block;
+    list-style-type: none;
+}
+button:hover {
+    background: #b3b3cb;
+    transition: 0.5s;
+}
+button:active {
+    background: #b3b3cb;
+    border:0px;
+    transition: 0.5s;
+}
+button {
+    background:transparent;
+    border: 0px;
+
+}

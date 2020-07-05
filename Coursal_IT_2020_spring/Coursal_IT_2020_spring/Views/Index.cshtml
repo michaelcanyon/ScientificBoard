@@ -1,0 +1,41 @@
+﻿@model Coursal_IT_2020_spring.Models.IndexViewModel
+
+@{
+    ViewData["Title"] = "Посты";
+}
+
+<h2>@ViewData["Title"]</h2>
+<form method="get">
+    <div class="form-group">
+        <input type="submit" value="Поиск" class="btn btn-outline-secondary" />
+    </div>
+</form>
+
+<p>
+    <a asp-controller="Home" asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Заголовок</th>
+        <th>Автор</th>
+        <th>Текст</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Posts)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Author</td>
+            <td>@item.Title</td>
+            <td>
+                @item.Text
+            </td>
+            <td>
+                <a asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id">Удалить</a> |
+            </td>
+        </tr>
+    }
+</table>

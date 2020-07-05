@@ -1,0 +1,169 @@
+﻿@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Squada+One&display=swap);
+
+.page {
+}
+
+.page_headline {
+    width: 100%;
+    height: 100px;
+    background: #9696b7;
+}
+
+.page_headline_logo-image {
+    width: 5%;
+    padding: 5px;
+    padding-left: 15px;
+}
+
+.page_headline-list {
+    position: absolute;
+    right: 50px;
+    top: 20px;
+    display: inline-block;
+    list-style-type: none;
+}
+
+.page_headline-perks > li {
+    display: inline;
+    padding: 30px 50px 30px 50px;
+    background: #9696b7;
+    transition: 0.5s;
+}
+
+li:hover {
+    background: #b3b3cb;
+    transition: 0.5s;
+}
+
+.login_button span {
+    font-family: 'Oswald', 'Sans-serif';
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+}
+
+.page_post {
+    width: 70%;
+    background: #9696b7;
+    margin-top: 20px;
+}
+
+.post_author-avatar {
+    width: 80px;
+    margin: 20px auto 0px 20px;
+}
+
+.post_header-text {
+    text-decoration: none;
+    color: black;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 0px;
+    margin: 20px auto auto 20px;
+    display: inline-block;
+    position: absolute;
+    letter-spacing: 1.5px;
+}
+
+.post_header {
+    width: 100%;
+    height: 10%;
+}
+
+.post_date-time {
+    margin: 70px auto auto 25px;
+    font-family: 'Times', sans-serif;
+    font-weight: bold;
+}
+
+.post_tags {
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 17px;
+    color: black;
+    letter-spacing: 1px;
+    margin: 10px;
+}
+
+.post_picture {
+    width: 50%;
+    margin: 10px auto auto 25%;
+}
+
+.post_preview {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 10px 30px 10px 30px;
+}
+
+.page_post-nums {
+    width: 20%;
+    margin-left: 25%;
+}
+
+.post-nums_list > li {
+    display: inline-block;
+    font-family: 'Oswald', 'sans-serif';
+    font-size: 25px;
+}
+
+.post-nums_list-selected {
+    border: 1px solid #9696b7;
+}
+
+.post-nums_list-ref a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+
+.page_footer {
+    width: 100%;
+    height: 50px;
+    background: #9696b7;
+}
+
+.page_footer-copyright {
+    display: inline-block;
+    font-family: 'Consolas', 'Sans-serif';
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.page_recent-posts-block {
+    position: absolute;
+    width: 29%;
+    height: 500px;
+    background: #9696b7;
+    top: 120px;
+    right: 10px;
+}
+
+.short-post {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+}
+
+.short-post_author-avatar {
+    width: 10%;
+    padding: 10px;
+}
+
+.short-post_header-text {
+    text-decoration: none;
+    color: black;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    font-size: px;
+    margin-top: 0px;
+    margin: 20px auto auto 20px;
+    display: inline-block;
+    position: absolute;
+    letter-spacing: 1.5px;
+}

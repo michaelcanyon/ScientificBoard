@@ -1,0 +1,2 @@
+# ScientificBoard
+ client-server app

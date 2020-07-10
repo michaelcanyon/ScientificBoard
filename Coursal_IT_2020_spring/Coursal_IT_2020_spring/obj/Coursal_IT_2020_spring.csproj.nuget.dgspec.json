@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring.csproj": {}
+    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring.csproj": {
+    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring.csproj",
+        "projectUniqueName": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring.csproj",
         "projectName": "Coursal_IT_2020_spring",
-        "projectPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring.csproj",
+        "projectPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring.csproj",
         "packagesPath": "C:\\Users\\hrani\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring\\obj\\",
+        "outputPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\Coursal_IT_2020_spring\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -47,6 +47,16 @@
               "version": "[6.4.4, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.4, )"
             },

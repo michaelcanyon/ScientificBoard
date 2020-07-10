@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\ClientApp\\ClientApp.csproj": {}
+    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\ClientApp\\ClientApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\ClientApp\\ClientApp.csproj": {
+    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\ClientApp\\ClientApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\ClientApp\\ClientApp.csproj",
+        "projectUniqueName": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\ClientApp\\ClientApp.csproj",
         "projectName": "ClientApp",
-        "projectPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\ClientApp\\ClientApp.csproj",
+        "projectPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\ClientApp\\ClientApp.csproj",
         "packagesPath": "C:\\Users\\hrani\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\ClientApp\\obj\\",
+        "outputPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\ClientApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

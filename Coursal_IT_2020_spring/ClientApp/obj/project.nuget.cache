@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3X++h4SmUnc810/On/54Ud6syp33jR1RbG+b8MXjRpTgivCHVWQ/kzNgd9n/zDixL8U25yGLUmaKM23GBw3fXg==",
+  "dgSpecHash": "llEG0MdcOXr2HEyW1DGJF/2n6a9n3At5dsUDc1vozH+muiqEG3jyvW8Qbc1VxrM9kA8W0C30E27Uf1tV1OMB9w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\ClientApp\\ClientApp.csproj",
+  "projectFilePath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\ClientApp\\ClientApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hrani\\.nuget\\packages\\microsoft.aspnetcore.nodeservices\\3.1.4\\microsoft.aspnetcore.nodeservices.3.1.4.nupkg.sha512",
     "C:\\Users\\hrani\\.nuget\\packages\\microsoft.aspnetcore.spaservices\\3.1.4\\microsoft.aspnetcore.spaservices.3.1.4.nupkg.sha512",

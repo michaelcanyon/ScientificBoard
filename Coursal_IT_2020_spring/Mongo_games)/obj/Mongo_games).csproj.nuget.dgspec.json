@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\Mongo_games)\\Mongo_games).csproj": {}
+    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\Mongo_games)\\Mongo_games).csproj": {}
   },
   "projects": {
-    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\Mongo_games)\\Mongo_games).csproj": {
+    "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\Mongo_games)\\Mongo_games).csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\Mongo_games)\\Mongo_games).csproj",
+        "projectUniqueName": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\Mongo_games)\\Mongo_games).csproj",
         "projectName": "Mongo_games)",
-        "projectPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\Mongo_games)\\Mongo_games).csproj",
+        "projectPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\Mongo_games)\\Mongo_games).csproj",
         "packagesPath": "C:\\Users\\hrani\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\Mongo_games)\\obj\\",
+        "outputPath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\Mongo_games)\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

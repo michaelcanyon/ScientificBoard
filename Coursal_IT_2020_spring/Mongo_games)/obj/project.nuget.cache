@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ym744sp2M9geQcZX+31E1ig0d6FnZAez1QEGcgUsR6IbaFBlONO5ZWKrubIzRxBoX6HIZPl562OtkKdF7lTiDA==",
+  "dgSpecHash": "je7xrljfT/6MLCo4AjDG95OO0JX4VSLwx0wIP/ygo8NHWt9zUU/DPHSM9Lo7wFOarf25co7/rKTff0cJIPLBhw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\projectsbin\\Coursal_IT_2020_spring\\Mongo_games)\\Mongo_games).csproj",
+  "projectFilePath": "C:\\Users\\hrani\\OneDrive\\Документы\\GitHub\\ScientificBoard\\Coursal_IT_2020_spring\\Mongo_games)\\Mongo_games).csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hrani\\.nuget\\packages\\dnsclient\\1.3.1\\dnsclient.1.3.1.nupkg.sha512",
     "C:\\Users\\hrani\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",

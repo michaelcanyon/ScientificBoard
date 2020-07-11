@@ -44,7 +44,7 @@ namespace Coursal_IT_2020_spring.Services
             {
                 //Blog removableBlog = await _blogRepository.GetByAuthor(removableAuthor);
                 //await _blogRepository.Delete(removableBlog);
-                var RemovablePosts = await _postRepository.GetPostsByAuthor(removableAuthor);
+                var RemovablePosts = await _postRepository.GetPostsByAuthor(removableAuthor.Id);
                 if (RemovablePosts != null)
                 {
                     foreach (var item in RemovablePosts)
@@ -67,7 +67,10 @@ namespace Coursal_IT_2020_spring.Services
         {
             return await _userRepository.GetByNickname(user.Nickname, user.Password);
         }
-
+        public async Task<User> GetAccount(int userId)
+        {
+            return await _userRepository.GetSingle(userId);
+        }
         public async Task Update(User user)
         {
             var newuser = await _userRepository.GetByNickname(user.Nickname, user.Password);

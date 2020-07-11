@@ -15,7 +15,7 @@ namespace Coursal_IT_2020_spring.Infrastructures
     /// <summary>
     /// Действия с объектом поста
     /// </summary>
-    public class PostRepository : IBaseRepository<Post>, IPostRepository
+    public class PostRepository : IPostRepository
     {
         protected BoardContext Database { get; set; }
         public PostRepository(BoardContext database)
@@ -58,12 +58,12 @@ namespace Coursal_IT_2020_spring.Infrastructures
             var posts = await Database.Database.SqlQuery<Post>("SELECT * FROM Posts WHERE Id LIKE @AuthorId ", AuthorId).ToListAsync();
             return posts;
         }
-        public async Task<List<Post>> GetPostsByCategory(string category)
-        {
-            System.Data.SqlClient.SqlParameter Category = new System.Data.SqlClient.SqlParameter("@Category", category);
-            var posts = await Database.Database.SqlQuery<Post>("SELECT Id FROM PostsTags WHERE LIKE @Category ", Category).ToListAsync();
-            return posts;
-        }
+        //public async Task<List<Post>> GetPostsByCategory(string category)
+        //{
+        //    System.Data.SqlClient.SqlParameter Category = new System.Data.SqlClient.SqlParameter("@Category", category);
+        //    var posts = await Database.Database.SqlQuery<Post>("SELECT * FROM PostsTags WHERE TagId LIKE @Category ", Category).ToListAsync();
+        //    return posts;
+        //}
 
         public async Task<Post> GetSingle(int PostId)
         {

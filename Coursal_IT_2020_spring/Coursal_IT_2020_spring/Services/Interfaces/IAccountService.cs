@@ -12,6 +12,7 @@ namespace Coursal_IT_2020_spring.Services.Interfaces
         Task Update(User user);
         Task<bool> DeleteAccount(string authorNickname, string password);
         Task<User> GetAccount(User user);
+        Task<User> GetAccount(int userId);
         Task<List<User>> GetAccounts();
     }
 }

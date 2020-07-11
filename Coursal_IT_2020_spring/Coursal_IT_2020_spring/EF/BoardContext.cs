@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Coursal_IT_2020_spring.Models;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Coursal_IT_2020_spring.EF
 {
@@ -13,10 +13,9 @@ namespace Coursal_IT_2020_spring.EF
         public DbSet<User> Users { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<PostTag> PostsTags { get; set; }
-        static BoardContext()
+        public BoardContext(DbContextOptions<BoardContext> options): base(options)
         {
-            Database.SetInitializer<BoardContext>(new BoardDbInitialser());
+            Database.EnsureCreated();   // создаем базу данных при первом обращении
         }
-        public BoardContext(string connectionString) : base(connectionString) { }
     }
 }

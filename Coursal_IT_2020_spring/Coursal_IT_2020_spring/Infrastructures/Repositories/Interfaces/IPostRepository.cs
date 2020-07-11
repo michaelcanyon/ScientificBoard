@@ -11,6 +11,6 @@ namespace Coursal_IT_2020_spring.IRepositories
     {
         public Task<Post> GetPostByTitle(string Title, string authorNickname);
         public Task<List<Post>> GetPostsByAuthor(int authorId);
-        public Task<List<Post>> GetPostsByCategory(string category);
+        //public Task<List<Post>> GetPostsByCategory(string category);
     }
 }

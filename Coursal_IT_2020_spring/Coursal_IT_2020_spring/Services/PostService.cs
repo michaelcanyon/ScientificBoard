@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Coursal_IT_2020_spring.Models;
 using Coursal_IT_2020_spring.Services.Interfaces;
 using Coursal_IT_2020_spring.IRepositories;
+using Coursal_IT_2020_spring.Infrastructures.Repositories.Interfaces;
+using System.Security.Cryptography;
 
 namespace Coursal_IT_2020_spring.Services
 {
@@ -13,18 +15,29 @@ namespace Coursal_IT_2020_spring.Services
        // private readonly IBlogRepository _blogRepository;
         private readonly IPostRepository _postRepository;
         private readonly IUserRepository _userRepository;
-        public PostService(IPostRepository postRepository, IUserRepository userRepository)
+        private readonly ITagRepository _tagRepository;
+        private readonly IPostTagRepository _postTagRepository;
+        public PostService(IPostRepository postRepository, IUserRepository userRepository, ITagRepository tagRepository, IPostTagRepository postTagRepository)
         {
          //   _blogRepository = blogRepository;
             _postRepository = postRepository;
             _userRepository = userRepository;
+            _tagRepository = tagRepository;
+            _postTagRepository = postTagRepository;
         }
         public async Task DeletePost(string postTitle, string authorNickname)
         {
             Post RemovablePost = await _postRepository.GetPostByTitle(postTitle, authorNickname);
             if (RemovablePost != null)
             {
-               // await _blogRepository.DeletePostFromBlog(RemovablePost);
+                // await _blogRepository.DeletePostFromBlog(RemovablePost);
+
+                //перемести это в сервис для тегов
+               //var _PostTags =await _postTagRepository.GetTagsIdList(RemovablePost.Id);
+               // foreach (var i in _PostTags)
+               // {
+               //     await _postTagRepository.Delete(i);
+               // }
                 await _postRepository.Delete(RemovablePost);
             }
         }
@@ -35,33 +48,38 @@ namespace Coursal_IT_2020_spring.Services
         public async Task<List<Post>> GetPostsByAuthor(string authorNickname)
         {
             User author = await _userRepository.GetByNickname(authorNickname);
-            return await _postRepository.GetPostsByAuthor(author);
+            return await _postRepository.GetPostsByAuthor(author.Id);
         }
-        public async Task<List<Post>> GetPostsByCategory(string[] categories)
+        public async Task<List<Post>> GetPostsByCategory(string category)
         {
-            return await _postRepository.GetPostsByCategory(categories);
+             var tag= await _tagRepository.GetSingle(category);
+             var postsIds= await _postTagRepository.GetPostsIdList(tag.Id);
+            List<Post> posts=new List<Post>(); 
+            foreach (var i in postsIds)
+            {
+                var post =await _postRepository.GetSingle(i.PostId);
+                if(post!=null)
+                    posts.Add(post);
+            }
+            return posts;
         }
         public async Task InsertPost(Post post)
         {
-            User author = await _userRepository.GetByNickname(post.Author.Nickname);
-            post.Author = author;
-            //Post post = new Post { Author = author, Title = postTitle, Text = postText, Publicationtime = dateTime, Tags = new List<string>() };
             await _postRepository.Create(post);
-            //post = await _postRepository.GetPostByTitle(post.Title, post.Author.Nickname);
-            //if (post != null)
-              //  await _blogRepository.InsertPostIntoBlog(author, post);
-
         }
 
         public async Task ReplacePostByTitle(string postTitle, string authorNickname, Post post)
         {
             var getPost = await _postRepository.GetPostByTitle(postTitle, authorNickname);
             getPost.Publicationtime = post.Publicationtime;
-            getPost.Tags = post.Tags;
             getPost.Text = post.Text;
             getPost.Title = post.Title;
          //  await _blogRepository.ReplacePostByTitleInBlog(getPost);
            await _postRepository.Update(getPost);
+        }
+        public async Task<Post> GetSingle(string postTitle, string authorNickname)
+        {
+            return await _postRepository.GetPostByTitle(postTitle, authorNickname);
         }
     }
 }

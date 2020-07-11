@@ -20,6 +20,8 @@ using Coursal_IT_2020_spring.Infrastructures.Repositories;
 using Coursal_IT_2020_spring.Services.Interfaces;
 using Coursal_IT_2020_spring.Services;
 using Microsoft.OpenApi.Models;
+using Coursal_IT_2020_spring.EF;
+using Microsoft.EntityFrameworkCore;
 
 namespace Coursal_IT_2020_spring
 {
@@ -38,17 +40,17 @@ namespace Coursal_IT_2020_spring
         {
             services.AddCors(); // добавляем сервисы CORS
             services.AddControllers();
-            IConfigurationSection connStrings = Configuration.GetSection("ConnectionString");
-            string defaultConnection = connStrings.GetSection("DataBaseHostUrl").Value;
-            var Connection = new MongoUrlBuilder(defaultConnection);
-            var Client = new MongoClient(defaultConnection);
             //services.AddTransient<IBlogRepository, BlogRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<ITagRepository, TagRepository>();
+            services.AddTransient<IPostTagRepository, PostTagRepository>();
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IPostService, PostService>();
-
-            services.AddSingleton<IMongoDatabase>(Client.GetDatabase(Connection.DatabaseName));
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            // добавляем контекст MobileContext в качестве сервиса в приложение
+            services.AddDbContext<BoardContext>(options =>
+                options.UseSqlServer(connection));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });

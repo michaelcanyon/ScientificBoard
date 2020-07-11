@@ -8,7 +8,7 @@ using Coursal_IT_2020_spring.EF;
 
 namespace Coursal_IT_2020_spring.Infrastructures.Repositories
 {
-    public class PostTagRepository : IBaseRepository<PostTag>
+    public class PostTagRepository : IPostTagRepository
     {
         protected BoardContext Database { get; set; }
         public PostTagRepository(BoardContext database)

@@ -10,9 +10,10 @@ namespace Coursal_IT_2020_spring.Services.Interfaces
     {
         public Task<List<Post>> GetPosts();
         public Task<List<Post>> GetPostsByAuthor(string authorNickname);
-        public Task<List<Post>> GetPostsByCategory(string[] categories);
+        public Task<List<Post>> GetPostsByCategory(string category);
         public Task InsertPost(Post post);
         public Task DeletePost(string postTitle, string authorNIckname);
         public Task ReplacePostByTitle(string postTitle, string authorNickname, Post post);
+        public Task<Post> GetSingle(string postTitle, string authorNickname);
     }
 }

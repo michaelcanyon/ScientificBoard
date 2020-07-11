@@ -49,7 +49,7 @@ namespace Coursal_IT_2020_spring.Controllers
             try
             {
                 var account = await _accountService.GetAccount(user.ToUserObject());
-                if (account.Id == "" || account.Id == null)
+                if (account==null)
                     return BadRequest("Login Error!");
                     return Ok(account);
             }

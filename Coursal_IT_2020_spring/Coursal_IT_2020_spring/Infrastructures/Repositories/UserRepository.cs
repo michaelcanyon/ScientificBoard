@@ -15,7 +15,7 @@ namespace Coursal_IT_2020_spring.Infrastructures
     /// <summary>
     /// Действия с объектом пользователя
     /// </summary>
-    public class UserRepository : IBaseRepository<User>, IUserRepository
+    public class UserRepository : IUserRepository
     {
         protected BoardContext Database { get; set; }
         public UserRepository(BoardContext database)

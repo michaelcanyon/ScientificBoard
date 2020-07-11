@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Coursal_IT_2020_spring.Infrastructures.Repositories;
 using Coursal_IT_2020_spring.EF;
 using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Coursal_IT_2020_spring.Infrastructures
 {
@@ -25,14 +26,14 @@ namespace Coursal_IT_2020_spring.Infrastructures
         public async Task<bool> ifUsernameBusy(string userName)
         {
             System.Data.SqlClient.SqlParameter Nickname = new System.Data.SqlClient.SqlParameter("@Nickname", "%" + userName + "%");
-            var users = await Database.Database.SqlQuery<User>("SELECT * FROM Users WHERE Nickname LIKE @Nickname", Nickname).ToListAsync();
+            var users = await Database.Users.FromSqlRaw("SELECT * FROM Users WHERE Nickname LIKE @Nickname", Nickname).ToListAsync();
             return users.Count() != 0 ? true : false;
         }
         public async Task<User> GetByNickname(string nickname, string password)
         {
             System.Data.SqlClient.SqlParameter Nickname = new System.Data.SqlClient.SqlParameter("@Nickname", "%" + nickname + "%");
             System.Data.SqlClient.SqlParameter Password = new System.Data.SqlClient.SqlParameter("@Password", "%" + password + "%");
-            var users = await Database.Database.SqlQuery<User>("SELECT * FROM Users WHERE Nickname LIKE @Nickname AND Password LIKE @Password", Nickname, Password).ToListAsync();
+            var users = await Database.Users.FromSqlRaw("SELECT * FROM Users WHERE Nickname LIKE @Nickname AND Password LIKE @Password", Nickname, Password).ToListAsync();
             foreach (var i in users)
             {
                 return i;
@@ -42,7 +43,7 @@ namespace Coursal_IT_2020_spring.Infrastructures
         public async Task<User> GetByNickname(string nickname)
         {
             System.Data.SqlClient.SqlParameter Nickname = new System.Data.SqlClient.SqlParameter("@Nickname", "%" + nickname + "%");
-            var users = await Database.Database.SqlQuery<User>("SELECT * FROM Users WHERE Nickname LIKE @Nickname", Nickname).ToListAsync();
+            var users = await Database.Users.FromSqlRaw("SELECT * FROM Users WHERE Nickname LIKE @Nickname", Nickname).ToListAsync();
             foreach (var i in users)
             {
                 return i;
@@ -69,7 +70,7 @@ namespace Coursal_IT_2020_spring.Infrastructures
         public async Task<User> GetSingle(int UserId)
         {
             System.Data.SqlClient.SqlParameter userId = new System.Data.SqlClient.SqlParameter("@userId", UserId);
-            var users = await Database.Database.SqlQuery<User>("SELECT * FROM Users WHERE Id LIKE @userId ", userId).ToListAsync();
+            var users = await Database.Users.FromSqlRaw("SELECT * FROM Users WHERE Id LIKE @userId ", userId).ToListAsync();
             foreach (var i in users)
             {
                 return i;
@@ -84,9 +85,9 @@ namespace Coursal_IT_2020_spring.Infrastructures
             System.Data.SqlClient.SqlParameter email = new System.Data.SqlClient.SqlParameter("@email", user.Email);
             System.Data.SqlClient.SqlParameter password = new System.Data.SqlClient.SqlParameter("@password", user.Password);
             System.Data.SqlClient.SqlParameter id = new System.Data.SqlClient.SqlParameter("@id", user.Id);
-            await Database.Database.SqlQuery<User>("UPDATE Users SET Nickname=@nickname, blogTitle=@blogTitle, Email=@email, Password=@password " +
+            await Database.Database.ExecuteSqlRawAsync("UPDATE Users SET Nickname=@nickname, blogTitle=@blogTitle, Email=@email, Password=@password " +
                 "WHERE Id LIKE @id "
-                , nickname, blogTitle, email, password, id).ToListAsync();
+                , nickname, blogTitle, email, password, id);
         }
     }
 }

@@ -9,6 +9,7 @@ using Coursal_IT_2020_spring.Infrastructures.Repositories;
 using Coursal_IT_2020_spring.IRepositories;
 using Coursal_IT_2020_spring.EF;
 using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Coursal_IT_2020_spring.Infrastructures
 {
@@ -44,7 +45,7 @@ namespace Coursal_IT_2020_spring.Infrastructures
         {
             System.Data.SqlClient.SqlParameter nickname = new System.Data.SqlClient.SqlParameter("@authorNickname", "%" + authorNickname + "%");
             System.Data.SqlClient.SqlParameter title = new System.Data.SqlClient.SqlParameter("@title", "%" + Title + "%");
-            var posts = await Database.Database.SqlQuery<Post>("SELECT * FROM Posts WHERE Title LIKE @title " +
+            var posts = await Database.Posts.FromSqlRaw("SELECT * FROM Posts WHERE Title LIKE @title " +
                 "AND AuthorId LIKE ( SELECT TOP 1 Id FROM Users WHERE nickname LIKE @authorNickname ) ", nickname, title).ToListAsync();
             foreach (var i in posts)
             {
@@ -55,7 +56,7 @@ namespace Coursal_IT_2020_spring.Infrastructures
         public async Task<List<Post>> GetPostsByAuthor(int authorId)
         {
             System.Data.SqlClient.SqlParameter AuthorId = new System.Data.SqlClient.SqlParameter("@AuthorId", authorId);
-            var posts = await Database.Database.SqlQuery<Post>("SELECT * FROM Posts WHERE Id LIKE @AuthorId ", AuthorId).ToListAsync();
+            var posts = await Database.Posts.FromSqlRaw("SELECT * FROM Posts WHERE Id LIKE @AuthorId ", AuthorId).ToListAsync();
             return posts;
         }
         //public async Task<List<Post>> GetPostsByCategory(string category)
@@ -68,7 +69,7 @@ namespace Coursal_IT_2020_spring.Infrastructures
         public async Task<Post> GetSingle(int PostId)
         {
             System.Data.SqlClient.SqlParameter postId = new System.Data.SqlClient.SqlParameter("@postId", PostId);
-            var posts = await Database.Database.SqlQuery<Post>("SELECT * FROM Posts WHERE Id LIKE @postId ", postId).ToListAsync();
+            var posts = await Database.Posts.FromSqlRaw("SELECT * FROM Posts WHERE Id LIKE @postId ", postId).ToListAsync();
             foreach (var i in posts)
             {
                 return i;
@@ -83,9 +84,9 @@ namespace Coursal_IT_2020_spring.Infrastructures
             System.Data.SqlClient.SqlParameter time = new System.Data.SqlClient.SqlParameter("@time", entity.Publicationtime);
             System.Data.SqlClient.SqlParameter author = new System.Data.SqlClient.SqlParameter("@author", entity.AuthorId);
             System.Data.SqlClient.SqlParameter id = new System.Data.SqlClient.SqlParameter("@id", entity.Id);
-            await Database.Database.SqlQuery<Post>("UPDATE Posts SET Title=@title, Text=@text, Publicationtime=@time, AuthorId=@author " +
+            await Database.Database.ExecuteSqlRawAsync("UPDATE Posts SET Title=@title, Text=@text, Publicationtime=@time, AuthorId=@author " +
                 "WHERE Id LIKE @id "
-                , title, text, time, author, id).ToListAsync();
+                , title, text, time, author, id);
         }
     }
 

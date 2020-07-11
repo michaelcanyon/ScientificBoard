@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Coursal_IT_2020_spring.EF
 {
-    public class BoardDbInitialser:DropCreateDatabaseIfModelChanges<BoardContext>
+    public class BoardDbInitialser
     {
-        protected override void Seed(BoardContext db)
-        {
-            db.Posts.Add(new Post { AuthorId=1, Publicationtime = DateTime.Now, Text = "123fourfivesix", Title = "countPost" });
-            db.SaveChangesAsync();
-        }
+        //protected override void Seed(BoardContext db)
+        //{
+        //    db.Posts.Add(new Post { AuthorId=1, Publicationtime = DateTime.Now, Text = "123fourfivesix", Title = "countPost" });
+        //    db.SaveChangesAsync();
+        //}
     }
 }

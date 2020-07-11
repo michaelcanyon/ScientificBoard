@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Coursal_IT_2020_spring.Models;
 using Coursal_IT_2020_spring.EF;
-using Coursal_IT_2020_spring.Infrastructures.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Coursal_IT_2020_spring.Infrastructures.Repositories
 {
@@ -36,7 +36,7 @@ namespace Coursal_IT_2020_spring.Infrastructures.Repositories
         public async Task<Tag> GetSingle(string tag)
         {
             System.Data.SqlClient.SqlParameter tagName = new System.Data.SqlClient.SqlParameter("@tag", tag);
-            var tags = await Database.Database.SqlQuery<Tag>("SELECT * FROM Tags WHERE Title LIKE @tag", tagName).ToListAsync();
+            var tags = await Database.Tags.FromSqlRaw("SELECT * FROM Tags WHERE Title LIKE @tag", tagName).ToListAsync();
             foreach (var i in tags)
             {
                 return i;
@@ -47,7 +47,7 @@ namespace Coursal_IT_2020_spring.Infrastructures.Repositories
         public async Task<Tag> GetSingle(int tag)
         {
             System.Data.SqlClient.SqlParameter Tag = new System.Data.SqlClient.SqlParameter("@tag", tag);
-            var tags = await Database.Database.SqlQuery<Tag>("SELECT * FROM Tags WHERE Id LIKE @tag", Tag).ToListAsync();
+            var tags = await Database.Tags.FromSqlRaw("SELECT * FROM Tags WHERE Id LIKE @tag", Tag).ToListAsync();
             foreach (var i in tags)
             {
                 return i;

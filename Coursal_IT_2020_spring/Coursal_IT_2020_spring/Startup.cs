@@ -39,7 +39,6 @@ namespace Coursal_IT_2020_spring
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(); // добавляем сервисы CORS
-            services.AddControllers();
             //services.AddTransient<IBlogRepository, BlogRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
@@ -47,10 +46,12 @@ namespace Coursal_IT_2020_spring
             services.AddTransient<IPostTagRepository, PostTagRepository>();
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IPostService, PostService>();
-            string connection = Configuration.GetConnectionString("DefaultConnection");
+            IConfigurationSection connString = Configuration.GetSection("ConnectionString");
+            string connection = connString.GetSection("DefaultConnection").Value;
             // добавляем контекст MobileContext в качестве сервиса в приложение
             services.AddDbContext<BoardContext>(options =>
                 options.UseSqlServer(connection));
+            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });

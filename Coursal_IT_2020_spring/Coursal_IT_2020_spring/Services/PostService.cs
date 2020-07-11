@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Coursal_IT_2020_spring.Models;
 using Coursal_IT_2020_spring.Services.Interfaces;
 using Coursal_IT_2020_spring.IRepositories;
-using Coursal_IT_2020_spring.Infrastructures.Repositories.Interfaces;
 using System.Security.Cryptography;
 
 namespace Coursal_IT_2020_spring.Services

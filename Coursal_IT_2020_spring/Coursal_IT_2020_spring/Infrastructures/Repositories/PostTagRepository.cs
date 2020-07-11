@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Coursal_IT_2020_spring.EF;
+using Microsoft.EntityFrameworkCore;
 
 namespace Coursal_IT_2020_spring.Infrastructures.Repositories
 {
@@ -30,13 +31,13 @@ namespace Coursal_IT_2020_spring.Infrastructures.Repositories
         public async Task<List<PostTag>> GetTagsIdList(int postId)
         {
             System.Data.SqlClient.SqlParameter PostId = new System.Data.SqlClient.SqlParameter("@postId",  postId);
-            var pairs = await Database.Database.SqlQuery<PostTag>("SELECT * FROM PostsTags WHERE PostId LIKE @postId", PostId).ToListAsync();
+            var pairs = await Database.PostsTags.FromSqlRaw("SELECT * FROM PostsTags WHERE PostId LIKE @postId", PostId).ToListAsync();
             return pairs;
         }
         public async Task<List<PostTag>> GetPostsIdList(int TagId)
         {
             System.Data.SqlClient.SqlParameter tagId = new System.Data.SqlClient.SqlParameter("@tagId", TagId);
-            var pairs = await Database.Database.SqlQuery<PostTag>("SELECT * FROM PostsTags WHERE TagId LIKE @tagId", tagId).ToListAsync();
+            var pairs = await Database.PostsTags.FromSqlRaw("SELECT * FROM PostsTags WHERE TagId LIKE @tagId", tagId).ToListAsync();
             return pairs;
         }
 

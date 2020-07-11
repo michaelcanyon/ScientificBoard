@@ -23,19 +23,4 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model.Posts)
-    {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.Author</td>
-            <td>@item.Title</td>
-            <td>
-                @item.Text
-            </td>
-            <td>
-                <a asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
-                <a asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id">Удалить</a> |
-            </td>
-        </tr>
-    }
 </table>

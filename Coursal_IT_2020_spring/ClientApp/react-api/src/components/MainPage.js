@@ -41,7 +41,7 @@ export class MainPage extends Component {
                 if (this.state.SearchByNickname === "") {
                     return post;
                 }
-                if (post.author.nickname === this.state.SearchByNickname) {
+                if (post.nickname === this.state.SearchByNickname) {
                     return post;
                 }
                 //return post.author.nickname.indexOf(this.state.SearchByNickname) !== -1;
@@ -67,7 +67,7 @@ export class MainPage extends Component {
                         </div>
                         <img className="post_picture" src="https://sciencejournal.withgoogle.com/static/images/social.png" />
                         <p className="post_preview">{post.text}</p>
-                        <p className="post_preview">{post.author.nickname}</p>
+                        <p className="post_preview">{post.nickname}</p>
                     </div>
 
                 ))}

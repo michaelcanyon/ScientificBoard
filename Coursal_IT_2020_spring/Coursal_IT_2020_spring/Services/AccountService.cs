@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Coursal_IT_2020_spring.IRepositories;
 using Coursal_IT_2020_spring.Models;
 using Coursal_IT_2020_spring.Services.Interfaces;
-using MongoDB.Driver;
 
 namespace Coursal_IT_2020_spring.Services
 {

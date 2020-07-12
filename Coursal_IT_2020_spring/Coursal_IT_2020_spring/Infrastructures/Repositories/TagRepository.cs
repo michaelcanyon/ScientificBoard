@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Coursal_IT_2020_spring.Models;
 using Coursal_IT_2020_spring.EF;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace Coursal_IT_2020_spring.Infrastructures.Repositories
 {
@@ -28,14 +29,17 @@ namespace Coursal_IT_2020_spring.Infrastructures.Repositories
             await Database.SaveChangesAsync();
         }
 
-        public Task Update(Tag entity)
+        public async Task Update(Tag entity)
         {
-            return null;
+            
+            SqlParameter nickname = new SqlParameter("@title", entity.Title);
+            SqlParameter id = new SqlParameter("@id", entity.Id);
+            await Database.Database.ExecuteSqlRawAsync("UPDATE Tags SET Title=@title WHERE Id LIKE @id ", nickname, id);
         }
 
         public async Task<Tag> GetSingle(string tag)
         {
-            System.Data.SqlClient.SqlParameter tagName = new System.Data.SqlClient.SqlParameter("@tag", tag);
+            SqlParameter tagName = new SqlParameter("@tag", tag);
             var tags = await Database.Tags.FromSqlRaw("SELECT * FROM Tags WHERE Title LIKE @tag", tagName).ToListAsync();
             foreach (var i in tags)
             {
@@ -46,7 +50,7 @@ namespace Coursal_IT_2020_spring.Infrastructures.Repositories
 
         public async Task<Tag> GetSingle(int tag)
         {
-            System.Data.SqlClient.SqlParameter Tag = new System.Data.SqlClient.SqlParameter("@tag", tag);
+            SqlParameter Tag = new SqlParameter("@tag", tag);
             var tags = await Database.Tags.FromSqlRaw("SELECT * FROM Tags WHERE Id LIKE @tag", Tag).ToListAsync();
             foreach (var i in tags)
             {
@@ -55,9 +59,9 @@ namespace Coursal_IT_2020_spring.Infrastructures.Repositories
             return null;
         }
 
-        public Task<List<Tag>> GetList()
+        public async Task<List<Tag>> GetList()
         {
-            return null;
+            return await Database.Tags.ToListAsync();
         }
     }
 }

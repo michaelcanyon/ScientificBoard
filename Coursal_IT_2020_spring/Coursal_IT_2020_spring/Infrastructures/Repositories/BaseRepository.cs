@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 using Coursal_IT_2020_spring.IRepositories;
 using Coursal_IT_2020_spring.Models;
 using Microsoft.Extensions.Configuration;
-using MongoDB.Driver;
-using MongoDB.Driver.GridFS;
-using MongoDB.Bson;
 using Coursal_IT_2020_spring.EF;
 
 namespace Coursal_IT_2020_spring.Infrastructures.Repositories

@@ -73,8 +73,8 @@ namespace Coursal_IT_2020_spring.Controllers
             try
             {
                var created = await _accountService.CreateAccount(user.ToUserObject());
-                if (!created)
-                    return BadRequest("Username is Busy");
+                //if (!created)
+                //    return BadRequest("Username is Busy");
                 return Ok(user.ToUserObject());
             }
             catch (Exception e)

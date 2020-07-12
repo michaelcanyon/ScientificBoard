@@ -2,9 +2,6 @@
 using System.Linq;
 using Coursal_IT_2020_spring.Models;
 using Coursal_IT_2020_spring.IRepositories;
-using MongoDB.Driver;
-using MongoDB.Bson;
-using MongoDB.Driver.GridFS;
 using System.Threading.Tasks;
 using System.IO;
 using Coursal_IT_2020_spring.Infrastructures.Repositories;

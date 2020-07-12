@@ -7,9 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Coursal_IT_2020_spring.Services.Interfaces;
 using Coursal_IT_2020_spring.Models;
 using Coursal_IT_2020_spring.ViewModels;
-using MongoDB.Bson;
 using Microsoft.AspNetCore.Cors;
-using MongoDB.Bson.IO;
 
 namespace Coursal_IT_2020_spring.Controllers
 {
@@ -76,8 +74,8 @@ namespace Coursal_IT_2020_spring.Controllers
                     List<string> Tags = new List<string>();
                     foreach (var g in posttags)
                         Tags.Add(g.Title);
-                    var nickname = (await _accountService.GetAccount(i.AuthorId)).Nickname;
-                    completePosts.Add(new PostViewModel { nickname = nickname, title = i.Title, text = i.Text, tags = Tags });
+                    var account =await _accountService.GetAccount(i.AuthorId);
+                    completePosts.Add(new PostViewModel { nickname = account.Nickname, password=account.Password, title = i.Title, text = i.Text, tags = Tags });
                 }
                 return Ok(completePosts);
             }
@@ -105,8 +103,8 @@ namespace Coursal_IT_2020_spring.Controllers
                     List<string> Tags = new List<string>();
                     foreach (var g in posttags)
                         Tags.Add(g.Title);
-                    var nickname = (await _accountService.GetAccount(i.AuthorId)).Nickname;
-                    completePosts.Add(new PostViewModel { nickname = nickname, title = i.Title, text = i.Text, tags = Tags });
+                    var account = await _accountService.GetAccount(i.AuthorId);
+                    completePosts.Add(new PostViewModel { nickname = account.Nickname, password = account.Password, title = i.Title, text = i.Text, tags = Tags });
                 }
                 return Ok(completePosts);
             }

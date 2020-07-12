@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Coursal_IT_2020_spring.EF;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace Coursal_IT_2020_spring.Infrastructures.Repositories
 {
@@ -30,30 +31,39 @@ namespace Coursal_IT_2020_spring.Infrastructures.Repositories
 
         public async Task<List<PostTag>> GetTagsIdList(int postId)
         {
-            System.Data.SqlClient.SqlParameter PostId = new System.Data.SqlClient.SqlParameter("@postId",  postId);
+            SqlParameter PostId = new SqlParameter("@postId",  postId);
             var pairs = await Database.PostsTags.FromSqlRaw("SELECT * FROM PostsTags WHERE PostId LIKE @postId", PostId).ToListAsync();
             return pairs;
         }
         public async Task<List<PostTag>> GetPostsIdList(int TagId)
         {
-            System.Data.SqlClient.SqlParameter tagId = new System.Data.SqlClient.SqlParameter("@tagId", TagId);
+            SqlParameter tagId = new SqlParameter("@tagId", TagId);
             var pairs = await Database.PostsTags.FromSqlRaw("SELECT * FROM PostsTags WHERE TagId LIKE @tagId", tagId).ToListAsync();
             return pairs;
         }
 
-        public Task Update(PostTag entity)
+        public async Task Update(PostTag entity)
         {
-            throw new NotImplementedException();
+            SqlParameter postid = new SqlParameter("@postId", entity.PostId);
+            SqlParameter tagId = new SqlParameter("@tagId", entity.TagId);
+            SqlParameter id = new SqlParameter("@id", entity.Id);
+            await Database.Database.ExecuteSqlRawAsync("UPDATE PostTags SET PostId=@postId, TagId=tagId WHERE Id LIKE @id ", postid, id, tagId);
         }
 
-        public Task<PostTag> GetSingle(int id)
+        public async Task<PostTag> GetSingle(int id)
         {
-            throw new NotImplementedException();
+            SqlParameter Id = new SqlParameter("@id", id);
+            var tags = await Database.PostsTags.FromSqlRaw("SELECT * FROM Tags WHERE Id LIKE @id", Id).ToListAsync();
+            foreach (var i in tags)
+            {
+                return i;
+            }
+            return null;
         }
 
-        public Task<List<PostTag>> GetList()
+        public async Task<List<PostTag>> GetList()
         {
-            throw new NotImplementedException();
+            return await Database.PostsTags.ToListAsync();
         }
     }
 }

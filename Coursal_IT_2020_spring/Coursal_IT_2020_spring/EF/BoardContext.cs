@@ -16,6 +16,11 @@ namespace Coursal_IT_2020_spring.EF
         public BoardContext(DbContextOptions<BoardContext> options): base(options)
         {
             Database.EnsureCreated();   // создаем базу данных при первом обращении
+            //LoadDefaultUsers();
         }
+        //private void LoadDefaultUsers()
+        //{
+        //    Users.Add(new User {  BlogTitle="new", Email="@mail.com", Nickname="IlonIlon", Password="753951" });
+        //}
     }
 }

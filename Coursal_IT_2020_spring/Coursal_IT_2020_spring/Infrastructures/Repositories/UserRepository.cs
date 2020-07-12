@@ -2,14 +2,11 @@
 using System.Linq;
 using Coursal_IT_2020_spring.Models;
 using Coursal_IT_2020_spring.IRepositories;
-using MongoDB.Bson;
-using MongoDB.Driver;
-using MongoDB.Driver.GridFS;
 using System.Threading.Tasks;
 using Coursal_IT_2020_spring.Infrastructures.Repositories;
 using Coursal_IT_2020_spring.EF;
-using System.Data.Entity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace Coursal_IT_2020_spring.Infrastructures
 {
@@ -25,14 +22,14 @@ namespace Coursal_IT_2020_spring.Infrastructures
         }
         public async Task<bool> ifUsernameBusy(string userName)
         {
-            System.Data.SqlClient.SqlParameter Nickname = new System.Data.SqlClient.SqlParameter("@Nickname", "%" + userName + "%");
+            SqlParameter Nickname = new SqlParameter("@Nickname", "%" + userName + "%");
             var users = await Database.Users.FromSqlRaw("SELECT * FROM Users WHERE Nickname LIKE @Nickname", Nickname).ToListAsync();
             return users.Count() != 0 ? true : false;
         }
         public async Task<User> GetByNickname(string nickname, string password)
         {
-            System.Data.SqlClient.SqlParameter Nickname = new System.Data.SqlClient.SqlParameter("@Nickname", "%" + nickname + "%");
-            System.Data.SqlClient.SqlParameter Password = new System.Data.SqlClient.SqlParameter("@Password", "%" + password + "%");
+            SqlParameter Nickname = new SqlParameter("@Nickname", "%" + nickname + "%");
+            SqlParameter Password = new SqlParameter("@Password", "%" + password + "%");
             var users = await Database.Users.FromSqlRaw("SELECT * FROM Users WHERE Nickname LIKE @Nickname AND Password LIKE @Password", Nickname, Password).ToListAsync();
             foreach (var i in users)
             {
@@ -42,7 +39,7 @@ namespace Coursal_IT_2020_spring.Infrastructures
         }
         public async Task<User> GetByNickname(string nickname)
         {
-            System.Data.SqlClient.SqlParameter Nickname = new System.Data.SqlClient.SqlParameter("@Nickname", "%" + nickname + "%");
+            SqlParameter Nickname = new SqlParameter("@Nickname", "%" + nickname + "%");
             var users = await Database.Users.FromSqlRaw("SELECT * FROM Users WHERE Nickname LIKE @Nickname", Nickname).ToListAsync();
             foreach (var i in users)
             {
@@ -69,7 +66,7 @@ namespace Coursal_IT_2020_spring.Infrastructures
         }
         public async Task<User> GetSingle(int UserId)
         {
-            System.Data.SqlClient.SqlParameter userId = new System.Data.SqlClient.SqlParameter("@userId", UserId);
+            SqlParameter userId = new SqlParameter("@userId", UserId);
             var users = await Database.Users.FromSqlRaw("SELECT * FROM Users WHERE Id LIKE @userId ", userId).ToListAsync();
             foreach (var i in users)
             {
@@ -80,12 +77,12 @@ namespace Coursal_IT_2020_spring.Infrastructures
 
         public async Task Update(User user)
         {
-            System.Data.SqlClient.SqlParameter nickname = new System.Data.SqlClient.SqlParameter("@nickname", user.Nickname);
-            System.Data.SqlClient.SqlParameter blogTitle = new System.Data.SqlClient.SqlParameter("@blogTitle", user.BlogTitle);
-            System.Data.SqlClient.SqlParameter email = new System.Data.SqlClient.SqlParameter("@email", user.Email);
-            System.Data.SqlClient.SqlParameter password = new System.Data.SqlClient.SqlParameter("@password", user.Password);
-            System.Data.SqlClient.SqlParameter id = new System.Data.SqlClient.SqlParameter("@id", user.Id);
-            await Database.Database.ExecuteSqlRawAsync("UPDATE Users SET Nickname=@nickname, blogTitle=@blogTitle, Email=@email, Password=@password " +
+            SqlParameter nickname = new SqlParameter("@nickname", user.Nickname);
+            SqlParameter blogTitle = new SqlParameter("@blogTitle", user.BlogTitle);
+            SqlParameter email = new SqlParameter("@email", user.Email);
+            SqlParameter password = new SqlParameter("@password", user.Password);
+            SqlParameter id = new SqlParameter("@id", user.Id);
+            await Database.Database.ExecuteSqlRawAsync("UPDATE Users SET Nickname=@nickname, BlogTitle=@blogTitle, Email=@email, Password=@password " +
                 "WHERE Id LIKE @id "
                 , nickname, blogTitle, email, password, id);
         }

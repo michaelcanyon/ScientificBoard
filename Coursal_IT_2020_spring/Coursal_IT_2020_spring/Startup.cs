@@ -11,10 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
-using System.Data.Entity.Infrastructure.Design;
 using Coursal_IT_2020_spring.Infrastructures;
-using MongoDB.Driver;
-using MongoDB.Driver.GridFS;
 using Coursal_IT_2020_spring.IRepositories;
 using Coursal_IT_2020_spring.Infrastructures.Repositories;
 using Coursal_IT_2020_spring.Services.Interfaces;
@@ -27,8 +24,6 @@ namespace Coursal_IT_2020_spring
 {
     public class Startup
     {
-        IMongoDatabase db;
-        IGridFSBucket gridFS;
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public Startup(IConfiguration configuration)
@@ -46,6 +41,7 @@ namespace Coursal_IT_2020_spring
             services.AddTransient<IPostTagRepository, PostTagRepository>();
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<IPostTagService, PostTagServce>();
             IConfigurationSection connString = Configuration.GetSection("ConnectionString");
             string connection = connString.GetSection("DefaultConnection").Value;
             // добавляем контекст MobileContext в качестве сервиса в приложение

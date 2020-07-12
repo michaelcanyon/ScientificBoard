@@ -9,7 +9,6 @@ namespace Coursal_IT_2020_spring.ViewModels
     public class PostViewModel
     {
         public string nickname { get; set; }
-        public string Email { get; set; }
         public string password { get; set; }
         public List<string> tags { get; set; }
         public string title { get; set; }
